@@ -5,7 +5,14 @@ const inputEl = document.querySelector("#validation-input");
 inputEl.addEventListener("blur", onInputBlur);
 
 function onInputBlur(event) {
-  event.currentTarget.value.length <= 6
-    ? inputEl.classList.add("valid")
-    : inputEl.classList.add("invalid");
+  if (
+    event.currentTarget.value.length ===
+    Number(event.currentTarget.attributes[2].value)
+  ) {
+    inputEl.classList.add("valid");
+    inputEl.classList.remove("invalid");
+  } else {
+    inputEl.classList.add("invalid");
+    inputEl.classList.remove("valid");
+  }
 }
